@@ -1,0 +1,26 @@
+// --------------------------------------------------------------------------
+// Element Setup
+// --------------------------------------------------------------------------
+
+$use-element-container: true !default;
+$use-element-document: true !default;
+$use-element-form: true !default;
+$use-element-media: true !default;
+$use-element-style: true !default;
+$use-element-type: true !default;
+
+
+
+// --------------------------------------------------------------------------
+// Base Setup
+// --------------------------------------------------------------------------
+$use-base-display: true !default;
+$use-base-type: true !default;
+
+
+
+// --------------------------------------------------------------------------
+// Component Setup
+// --------------------------------------------------------------------------
+
+$use-component-grid: true !default;

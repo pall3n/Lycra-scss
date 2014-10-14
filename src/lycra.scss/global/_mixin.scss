@@ -1,0 +1,104 @@
+// --------------------------------------------------------------------------
+// Mixins 
+// --------------------------------------------------------------------------
+// TODO: TIDY AND REFACTOR
+
+//
+// Media Queries
+//
+
+@mixin respond-to($media) {
+	@if $media == 'med' {
+		@media only screen and (min-width : $break--m) { @content; }
+	} @elseif $media == 'large' {
+		@media only screen and (min-width : $break--l) { @content; }
+	} @elseif $media == 'xlarge' {
+		@media only screen and (min-width : $break--xl) { @content; }
+	}
+}
+
+
+
+//
+// Font stack mixin
+//
+
+@mixin font-stack($level: "body", $weight: "regular") {
+	@if ($level == "mono") {
+		font-family: monospace, serif;
+	}
+
+	@else if ($level == "heading") {
+		font-family: 'acta-display', serif;
+		font-weight: 500;
+		font-style: normal;
+		letter-spacing: 0.5px;
+	}
+
+	@else if ($level == "subheading") {
+		font-family: 'Gotham SSm A', 'Gotham SSm B', "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+
+		font-weight: 300;
+		font-style: normal;
+	}
+
+	@else if ($level == "body") {
+		font-family: 'soleil', "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+		font-weight: 300;
+		font-style: normal;
+	}
+
+	@else if ($level == "italic") {
+		font-family: 'georgia', serif;
+		font-weight: $fw__normal;
+		font-style: italic;
+	}
+
+	@else if ($level == "icon") {
+		font-family: 'popcorn';
+		speak: none;
+		font-style: normal;
+		font-weight: normal;
+		font-variant: normal;
+		text-transform: none;
+		line-height: 1;
+
+		text-decoration: none;
+		color: $colour__base;
+
+		/* Better Font Rendering =========== */
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	@else {
+
+		@if ($weight == "heavy") {
+			font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+			font-weight: $fw__bold;
+		}
+
+		@if ($weight == "light") {
+			font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+			font-weight: $fw__light;
+		}
+
+		@else {
+			font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+			font-weight: $fw__normal;
+		}
+
+	}
+
+}
+
+
+//
+// Font size
+// Calculates a REM font size value with a px fallback
+//
+
+@mixin font-size($font-size: fontSize-b) {
+	font-size: $font-size + 0px;
+	font-size: convert-font-to-relative($font-size) + 0rem;	
+}

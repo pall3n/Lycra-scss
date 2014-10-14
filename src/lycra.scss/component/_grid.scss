@@ -1,0 +1,222 @@
+// --------------------------------------------------------------------------
+// Grid VARIABLES 
+// --------------------------------------------------------------------------
+
+$Column-gutter: 20px !default;
+$Column-prefix: col !default;
+
+$Container-maxWidth: 1800px !default;
+
+
+
+// --------------------------------------------------------------------------
+// Grid FUNCTIONS 
+// --------------------------------------------------------------------------
+
+//
+// Column width
+// Calculates the column width using the desired span and the total number of columns
+// For async grids it calulates the desired
+//
+
+@function columnWidth($Columns, $Column-span) {
+	@return percentage($Columns / $Column-span);
+}
+
+
+
+
+// --------------------------------------------------------------------------
+// Grid MIXINS
+// --------------------------------------------------------------------------
+
+//
+// Generate grid
+// Generates symmetric and asymetric grids using the $columns varible
+//
+
+@mixin generateGrid($Columns: 12, $Gutter: $Column-gutter, $Prefix: $Column-prefix) {
+
+	[class*="#{$Prefix}"] {
+		float: left;
+		padding-left: $Gutter;
+		padding-right: $Gutter;
+		box-sizing: border-box;
+	}
+
+	$Columm-total: $Columns;
+
+	// if async grid set total columns total number of them
+	@if length($Columns) > 1 {
+		$Columm-total: length($Columns);
+	}
+		
+	@for $i from 1 through $Columm-total {
+		.#{$Prefix + $i} {
+			@if length($Columns) > 1 {
+				// if there are multiple values in the Columns variable generate an asymmetrical grid
+				$Ratio: nth($Columns, $i);
+				width: columnWidth($Ratio, 1);
+			}
+			@else {
+				//else there is one whole number stating the total Columns in a symmetrical grid
+				width: columnWidth($i, $Columns);
+			}
+		}
+	}
+
+}
+
+
+
+//
+// Grid container mixin
+//
+
+@mixin container($Gutter-outer: true, $Gutter: $Column-gutter, $MaxWidth: true, $ContainerMargin: '0 auto') {
+	
+	width: 100%;
+	margin: $ContainerMargin;
+
+	@if $MaxWidth == true {
+		max-width: $Container-maxWidth;
+	}
+
+	@if $Gutter-outer == true {
+		padding: 0 $Gutter;
+		box-sizing: border-box;
+	} else {
+		padding: 0;
+	}
+
+	*zoom: 1;
+
+	&:before,
+	&:after {
+		display: table;
+		line-height: 0;
+		content: "";
+	}
+
+	&:after {
+		clear: both;
+	}
+}
+
+
+
+//
+// Grid row mixin
+//
+
+@mixin row {
+	*zoom: 1;
+	box-sizing: border-box;
+
+	&:before,
+	&:after {
+		display: table;
+		line-height: 0;
+		content: "";
+	}
+
+	&:after {
+		clear: both;
+	}
+}
+
+
+
+//
+// Grid row nested mixin
+//
+
+@mixin row-nested {
+	margin-left: -$Column-gutter / 2;
+	margin-right: -$Column-gutter / 2;
+	*zoom: 1;
+	box-sizing: border-box;
+
+	&:before,
+	&:after {
+		display: table;
+		line-height: 0;
+		content: "";
+	}
+
+	&:after {
+		clear: both;
+	}
+}
+
+
+
+//
+// Show grid
+//
+
+@mixin showGrid($Prefix: $Column-prefix) {
+	[class*="#{$Prefix}"] {
+		background-color: darken(#fff, 1%);
+		position: relative;
+
+		&:before,
+		&:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			width: $Column-gutter;
+			background-color: darken(#fff, 4%);
+		}
+
+		&:before {
+			left: 0;
+		}
+
+		&:after {
+			right: 0;
+		}
+	}
+}
+
+
+
+@if $use-component-grid == true {
+
+	//
+	// Create variable-number grid columns given the value
+	// for variable `$column-number`
+	//
+
+
+	// --------------------------------------------------------------------------
+	// Grid Container
+	// --------------------------------------------------------------------------
+
+	.container {
+		@include container();
+	}
+
+
+
+	// --------------------------------------------------------------------------
+	// Grid Row
+	// --------------------------------------------------------------------------
+
+	.row {
+		@include row();
+	}
+
+
+
+	// --------------------------------------------------------------------------
+	// Grid Row nested
+	// --------------------------------------------------------------------------
+
+	.row--nested {
+		@include row-nested();
+		margin-top: 0;
+	}
+
+}
