@@ -120,8 +120,8 @@ module.exports = function(grunt) {
 			* Remove generated files for clean deploy
 		*/
 		clean: {
-			libs: [
-				'<%= project.css %>'
+			dist: [
+				'<%= project.dist %>'
 			]
 		},
 
@@ -132,7 +132,13 @@ module.exports = function(grunt) {
 			* https://github.com/gruntjs/grunt-contrib-copy
 		*/
 		copy: {
-			
+			dist: {
+				// includes files within path and its sub-directories
+				expand: true,
+				cwd: 'src',
+				src: 'lycra.scss/**',
+				dest: 'dist/'
+			}
 		},
 
 
@@ -301,9 +307,8 @@ module.exports = function(grunt) {
 		* Then compress all JS/CSS files
 	*/
 	grunt.registerTask('build', [
-		// 'clean:libs',
-		'sass:dist',
-		'autoprefixer:dist',
+		'clean:dist',
+		'copy:dist',
 		// 'kss'
 	]);
 
