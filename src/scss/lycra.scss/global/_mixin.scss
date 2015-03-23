@@ -48,3 +48,13 @@
 	font-size: $font-size + 0px;
 	font-size: convert-font-to-relative($font-size) + 0rem;	
 }
+
+
+//
+// Calculates a REM line height value with a px fallback
+//
+
+@mixin line-height($line-height: $FontSize-b) {
+	line-height: $line-height + 0px;
+	line-height: convert-font-to-relative($line-height) + 0rem;	
+}
