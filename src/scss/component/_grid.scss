@@ -6,16 +6,13 @@
 // Test lycra grid and build a standard 12 column grid
 //
 
-@include generateColumns(12);
-@include showGrid();
+// @include generateColumns(12);
+// @include showGrid();
 
-[class*="#{$Column-prefix}"] {
+.column {
 	min-height: 200px;
+	margin-top: 50px;
 }
 
 @include generateColumns(1/8 2/4 3/8, span);
 @include showGrid(span);
-[class*="span"] {
-	min-height: 200px;
-	margin-top: 50px;
-}

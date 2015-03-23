@@ -323,40 +323,4 @@ dfn {
   width: 100%;
 }
 
-.column {
-  min-height: 200px;
-  margin-top: 50px;
-}
-
-.span1 {
-  width: 12.5%;
-}
-
-.span2 {
-  width: 50%;
-}
-
-.span3 {
-  width: 37.5%;
-}
-
-[class*="span"] {
-  background-color: #fcfcfc;
-  position: relative;
-}
-[class*="span"]:before, [class*="span"]:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 20px;
-  background-color: whitesmoke;
-}
-[class*="span"]:before {
-  left: 0;
-}
-[class*="span"]:after {
-  right: 0;
-}
-
-/*# sourceMappingURL=styles.css.map */
+/*# sourceMappingURL=lycra.css.map */

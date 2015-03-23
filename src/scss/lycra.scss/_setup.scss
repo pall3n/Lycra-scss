@@ -32,6 +32,7 @@ $use-base-type: true !default;
 // --------------------------------------------------------------------------
 
 $use-component-grid: true !default;
+$show-grid: true !default;
 
 
 
@@ -87,8 +88,8 @@ $FontWeight-normal: 500;
 $FontWeight-semi: 600;
 
 
-$FontStyle-italic: italic;
-$FontStyle-noraml: normal;
+$FontStyle-italic: 'italic';
+$FontStyle-noraml: 'normal';
 
 
 

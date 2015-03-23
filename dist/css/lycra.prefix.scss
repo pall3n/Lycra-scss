@@ -68,6 +68,7 @@ html input[disabled] {
 
 input[type="checkbox"],
 input[type="radio"] {
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   /* 1 */
   padding: 0;
@@ -78,7 +79,6 @@ input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
   -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
   /* 2 */
   box-sizing: content-box;
 }
@@ -125,10 +125,13 @@ hr {
 a {
   background: transparent;
 }
+
 a:focus {
   outline: thin dotted;
 }
-a:active, a:hover {
+
+a:active,
+a:hover {
   outline: 0;
 }
 
@@ -232,7 +235,9 @@ dfn {
   background-color: #fcfcfc;
   position: relative;
 }
-[class*="column-"]:before, [class*="column-"]:after {
+
+[class*="column-"]:before,
+[class*="column-"]:after {
   content: '';
   position: absolute;
   top: 0;
@@ -240,9 +245,11 @@ dfn {
   width: 20px;
   background-color: whitesmoke;
 }
+
 [class*="column-"]:before {
   left: 0;
 }
+
 [class*="column-"]:after {
   right: 0;
 }
@@ -252,17 +259,22 @@ dfn {
   padding: 0 20px;
   width: 100%;
   margin: 0 auto;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   *zoom: 1;
 }
-.row:before, .row:after {
+
+.row:before,
+.row:after {
   display: table;
   line-height: 0;
   content: "";
 }
+
 .row:after {
   clear: both;
 }
+
 .row .row {
   margin-left: -20px;
   margin-right: -20px;
@@ -272,6 +284,7 @@ dfn {
   float: left;
   padding-left: 20px;
   padding-right: 20px;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -323,40 +336,4 @@ dfn {
   width: 100%;
 }
 
-.column {
-  min-height: 200px;
-  margin-top: 50px;
-}
-
-.span1 {
-  width: 12.5%;
-}
-
-.span2 {
-  width: 50%;
-}
-
-.span3 {
-  width: 37.5%;
-}
-
-[class*="span"] {
-  background-color: #fcfcfc;
-  position: relative;
-}
-[class*="span"]:before, [class*="span"]:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 20px;
-  background-color: whitesmoke;
-}
-[class*="span"]:before {
-  left: 0;
-}
-[class*="span"]:after {
-  right: 0;
-}
-
-/*# sourceMappingURL=styles.css.map */
+/*# sourceMappingURL=lycra.css.map */

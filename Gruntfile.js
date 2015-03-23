@@ -46,7 +46,7 @@ module.exports = function(grunt) {
 			devSass: '<%= project.devSassDir %>/<%= project.devSassFile %>',
 			devCss: '<%= project.devCssDir %>/<%= project.devCssFile %>',
 			
-			sassDir: '<%= project.src %>/lycra.scss',
+			sassDir: '<%= project.src %>/scss/lycra.scss',
 			sassFile: 'lycra.scss',
 			sass: '<%= project.sassDir %>/<%= project.sassFile %>',
 			
